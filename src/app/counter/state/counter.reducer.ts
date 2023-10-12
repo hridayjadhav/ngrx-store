@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { initialState } from './counter.state';
-import { decrement, increment, reset } from './counter.actions';
+import { customIncrement, decrement, increment, reset } from './counter.actions';
 
 const _counterReducer = createReducer(
   initialState,
@@ -18,6 +18,12 @@ const _counterReducer = createReducer(
     return{
         ...state,
         counter: 0,
+    }
+  }), on(customIncrement, (state, action)=>{   //we have to use action to implement any actions we have to do.
+    return{
+      ...state,
+      // counter:  action.count   //via this we can change the value of counter manually.
+      counter:  state.counter + action.count   // this will add the custom manually putted number into the counter number which is already there on display. 
     }
   })
 );
