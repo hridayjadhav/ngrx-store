@@ -8,3 +8,4 @@ export const customIncrement = createAction('customIncrement', props<{count : nu
 
 
 
+export const Name = createAction('Name');
